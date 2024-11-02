@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Знайдіть захований скарб!</title>
+</head>
+<body id="body" bgcolor="green">
+
+	<h1 id="heading">Знайдіть захований скарб!</h1>
+	<img id="map" width=500 height=500 src="img/treasureMap1.png">
+	<p id="distance"></p>
+	<p id='alertClick'></p>
+
+	<script src="https://code.jquery.com/jquery-2.1.0.js "></script>
+
+	<script type="text/javascript">
+		var gameOver = function (clicks) {
+			if (clicks >= 40) {
+				alert("GAME OVER");
+			}
+		};
+
+		var alertClick = function () {
+			xodu--;
+			$('#alertClick').text('Залишилося кліків: ' + xodu);
+
+		};
+		
+		var getRandomNumber = function (size) {
+			return Math.floor(Math.random() * size);
+		};
+
+		var getDistance = function (event, target) {
+			var diffX = event.offsetX - target.x;
+			var diffY = event.offsetY - target.y;
+			return Math.sqrt((diffX * diffX) + (diffY * diffY))
+		};
+		var getDistanceHit = function (distance) {
+			if (distance < 10){
+				return "Горимо";
+			}else if (distance < 20){
+				return "Справді гаряче";
+			}else if (distance < 40){
+				return "Гаряче";
+			}else if (distance < 80){
+				return "Тепло";
+			}else if (distance < 110){
+				return "Холодно";
+			}else if (distance < 160){
+				return "Дійсно холодно";
+			}else if ( distance < 320) {
+				return "Дуже-дуже холодно";
+			}else { 
+				return "Замерзаємо!";
+		}
+	}
+
+
+		var width = 800;
+		var heigth = 800;
+		var clicks = 0;
+		var xodu = 40;
+
+		var target  = {
+			x: getRandomNumber(width),
+			y: getRandomNumber(heigth)
+		};
+		
+		$('h1').offset({left:350})
+		$("#map").offset({left:300})
+		$('p').offset({left:450})
+		$('#map').click (function (event) {
+			clicks++;
+
+			var distance = getDistance(event, target);
+
+			var distanceHit = getDistanceHit(distance);
+
+			$("#distance").text(distanceHit);
+
+			if (distance < 12) {
+			alert("Ти знайшов скарб за " + clicks + " кліків!");
+			}
+			gameOver(clicks);
+			alertClick();
+		});
+	</script>
+</body>
+</html>

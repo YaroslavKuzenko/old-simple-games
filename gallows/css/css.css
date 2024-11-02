@@ -1,0 +1,56 @@
+body{
+	background-image: url("../img/page-fon.jpg");
+}
+#canvas {
+	display: none;
+}
+#textIn{
+	border-radius: 10px;
+	height: 20px;
+}
+#ok, #restart {
+	border-radius: 10px;
+}
+#progress_bar{
+	background-color: #1a1a1a;
+	height: 15px;
+	padding: 5px;
+	width: 200px;
+	margin: 50px 0;         
+	border-radius: 15px;
+	box-shadow: 0 1px 5px #000 inset, 0 1px 0 #444;           
+	}
+#progress_bar span {
+	background-color: #6B8E23;
+	display: inline-block;
+	height: 100%;
+	border-radius: 15px;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset;
+	transition: width .4s ease-in-out;    
+}
+#output1 {
+	display:block;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: 'Cambria';
+	font-size: 17px;
+}
+#output2 {
+	font-family: 'Cambria';
+	font-size: 17px;
+}
+#output3 {
+	font-family: 'Cambria';
+	font-size: 20px;
+}
+#restart {
+	display: none;
+}
+.restart {
+	font-family: 'Cambria';
+}
+@media(min-width: 0px)and(max-width: 375px){
+body{
+	display: block;
+	
+}
